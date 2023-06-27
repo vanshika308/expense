@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import ExpenseItem from './components/ExpenseItem';
 
@@ -40,7 +40,7 @@ function App() {
           key={expense.id}
           title={expense.title}
           amount={expense.amount}
-          date={expense.date.toLocaleString()}
+          date={expense.date}
           location={expense.location}
         />
       ))}
