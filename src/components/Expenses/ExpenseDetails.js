@@ -1,6 +1,7 @@
+import React,{useState} from 'react';
 import './ExpenseItems.css';
 function ExpenseDetails(props){
-    
+  
     return(
       <>
       <div className='expense-item__description'>
@@ -8,6 +9,7 @@ function ExpenseDetails(props){
         <div className='expense-item__price'>{props.amount}</div>
         <div className='expense-item__price'>{props.location}</div>
         </div>
+       
         </>
     );
 }

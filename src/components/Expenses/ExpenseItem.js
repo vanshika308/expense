@@ -1,24 +1,30 @@
+import React,{useState} from 'react';
+
 import './ExpenseItems.css';
 import ExpenseDate from './ExpenseDate';
 import ExpenseDetails from './ExpenseDetails';
 import Card from '../UI/Card';
 function ExpenseItem(props){
+    
+    const [price, setPrice] = useState(props.amount);
   
-    const deleteExpense = () =>{
-     const expenseItem = document.querySelector('.expense-item');
-        expenseItem.remove();
-    }
+  const clickHandler = () => {
+    setPrice(100);
+ 
+  };
+
+    
     return (
         <Card className='expense-item'>
           <div>
           <ExpenseDate date={props.date}/>
           </div>
           <div className='expense-item__description'>
-          <ExpenseDetails amount={props.amount}  
+          <ExpenseDetails amount={price}  
           location={props.location}  
            title={props.title} />
           </div>
-          <button onClick={deleteExpense}>DELETE</button>
+          <button onClick={clickHandler}>Change</button>
         </Card>
     );
 }
