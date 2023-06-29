@@ -1,27 +1,42 @@
-import React from "react";
+import React,{useState} from "react";
 import './ExpenseForm.css';
 
 const ExpenseForm=()=>{
-   const changeHandler=(event)=>{
-      console.log(event.target.value);
+   const[enteredTitle,setEnteredTitle]=useState('');
+   const[enteredAmount,setEnteredAmount]=useState('');
+   const[enteredDate,setEnteredDate]=useState('');
+   const[enteredLocation,setEnteredLocation]=useState('');
+
+   const titlechangeHandler=(event)=>{
+      setEnteredTitle(event.target.value);
    }
+   const amountchangeHandler=(event)=>{
+      setEnteredAmount(event.target.value);
+   }
+   const datechangeHandler=(event)=>{
+      setEnteredDate(event.target.value);
+   }
+   const locationchangeHandler=(event)=>{
+      setEnteredLocation(event.target.value);
+   }
+
    return(<form>
       <div className="new-expense__controls">
         <div className="new-expense__control">
            <label>Title:</label>
-           <input type='text' onChange={changeHandler}/>
+           <input type='text' onChange={titlechangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Date:</label>
-           <input type='date' onChange={changeHandler}/>
+           <input type='date' onChange={amountchangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Amount:</label>
-           <input type='number' onChange={changeHandler}/>
+           <input type='number' onChange={datechangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Location:</label>
-           <input type='text' onChange={changeHandler}/>
+           <input type='text' onChange={locationchangeHandler}/>
         </div>
         <div className="new-expense__actions">
            <button type='submit'>Add Expense</button>
