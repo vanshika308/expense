@@ -19,27 +19,37 @@ const ExpenseForm=()=>{
    const locationchangeHandler=(event)=>{
       setEnteredLocation(event.target.value);
    }
-
-   return(<form>
+ const submitHandler =(event)=>{
+   event.preventDefault();
+     
+     var expensedata={
+      name: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+      location: enteredLocation
+     };
+     console.log(expensedata);
+ };
+   return(<form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
            <label>Title:</label>
-           <input type='text' onChange={titlechangeHandler}/>
+           <input type='text' id='title' onChange={titlechangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Date:</label>
-           <input type='date' onChange={amountchangeHandler}/>
+           <input type='date' id='date' onChange={amountchangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Amount:</label>
-           <input type='number' onChange={datechangeHandler}/>
+           <input type='number' id='amount' onChange={datechangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Location:</label>
-           <input type='text' onChange={locationchangeHandler}/>
+           <input type='text'  id ='location' onChange={locationchangeHandler}/>
         </div>
         <div className="new-expense__actions">
-           <button type='submit'>Add Expense</button>
+           <button type='submit' >Add Expense</button>
         </div>
     </div>
    </form>
