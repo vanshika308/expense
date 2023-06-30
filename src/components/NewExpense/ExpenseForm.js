@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import './ExpenseForm.css';
 
-const ExpenseForm=()=>{
+const ExpenseForm=(props)=>{
    const[enteredTitle,setEnteredTitle]=useState('');
    const[enteredAmount,setEnteredAmount]=useState('');
    const[enteredDate,setEnteredDate]=useState('');
@@ -22,31 +22,45 @@ const ExpenseForm=()=>{
  const submitHandler =(event)=>{
    event.preventDefault();
      
-     var expensedata={
-      name: enteredTitle,
+     const expensedata={
+      title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
       location: enteredLocation
      };
-     console.log(expensedata);
+      
+     props.onsaveExpenseData(expensedata);
+     
+     setEnteredTitle('');
+     setEnteredAmount('');
+     setEnteredDate('');
+     setEnteredLocation('');
  };
    return(<form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
            <label>Title:</label>
-           <input type='text' id='title' onChange={titlechangeHandler}/>
+           <input type='text' 
+           value={enteredTitle}
+            onChange={titlechangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Date:</label>
-           <input type='date' id='date' onChange={amountchangeHandler}/>
+           <input type='date'
+            value={enteredDate}
+            onChange={datechangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Amount:</label>
-           <input type='number' id='amount' onChange={datechangeHandler}/>
+           <input type='number' 
+           value={enteredAmount}
+           onChange={amountchangeHandler}/>
         </div>
         <div className="new-expense__control">
            <label>Location:</label>
-           <input type='text'  id ='location' onChange={locationchangeHandler}/>
+           <input type='text' 
+            value={enteredLocation}
+             onChange={locationchangeHandler}/>
         </div>
         <div className="new-expense__actions">
            <button type='submit' >Add Expense</button>
